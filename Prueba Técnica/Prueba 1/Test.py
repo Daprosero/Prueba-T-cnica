@@ -4,6 +4,7 @@ import websockets
 import json 
 import sympy
 import time 
+# Se conecta con el server y muestra los resultados
 async def test():
     async with websockets.connect('ws://localhost:8000') as websocket:
         while True:

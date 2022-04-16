@@ -26,10 +26,11 @@ def process_json(list_dict_response):
             'number_of_even_numbers':number_of_even_numbers,
             'number_of_odd_numbers':number_of_odd_numbers}
 async def test():
+    # Se conecta con el server
     async with websockets.connect('ws://localhost:8000') as websocket:
-        #await websocket.send("hello")
         while True:
             data=[]
+            # Se leen 600 datos de 100 bloques equivalente a 1 minuto de información
             for i in range (600):
                 response = await websocket.recv()
                 list = json.loads(response)

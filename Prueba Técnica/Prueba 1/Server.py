@@ -2,14 +2,16 @@ import asyncio
 import websockets
 import json
 import random 
-import time 
+import time
+#Esta función se encarga de generar los datos 
 def data():
     dict_ = {"a": random.randint(1,101),
             "b": random.randint(0, 2**32)}
     return dict_
+#Función para garantizar el envío de 100 json cada 100ms
 def Tim():
     time.sleep(0.1)
-# create handler for each connection
+# Crea una conexión y envía los datos
 async def Server(websocket, path):
     while True:
         await websocket.send(json.dumps([data() for i in range(100)]))
